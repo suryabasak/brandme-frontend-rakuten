@@ -1,0 +1,280 @@
+<div class="active-slide">
+    <label class="toogleswitch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+    </label>
+</div>
+<div class="active-loader" *ngIf="!shares">
+    <app-loader></app-loader>
+</div>
+<div *ngIf="shares">
+    <div class="received-list-row" *ngIf="activeShare.length > 0">
+        <div class="share-header-top">
+            <h2>Active Requests</h2>
+        </div>
+        <div class="received-row-item">
+            <ngx-slick-carousel class="received-slider" #slickModal="slick-carousel" [config]="activeSliderConfig">
+                <div ngxSlickItem *ngFor="let share of activeShare; let i = index;">
+                    <div class="received-col-item">
+                        <div class="received-col">
+                            <div class="received-box-wrap">
+                                <div class="received-user-row">
+                                    <div class="received-user-item">
+                                        <div class="received-user-img">
+                                            <img [src]="share.User.ProfileImage"
+                                                onerror="this.src='assets/images/user.png';" alt="..." />
+                                        </div>
+                                        <div class="received-user-info">
+                                            <div class="received-user-top">
+                                                <div class="received-user-name">{{ share.User.Username }}</div>
+                                            </div>
+                                            <span class="user-post-txt">{{ share.Product.name }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="share-product-count">
+                                        <countdown class="time-display"
+                                            [config]="{format: 'mm:ss', leftTime: share.leftTime}"
+                                            (event)="rearrangeShares($event)"></countdown>
+                                    </div>
+                                </div>
+                                <div class="active-product-row"
+                                    [class.showcomment]="currentActiveIndex == i ? 'commentshow' : ''">
+                                    <div class="active-product-boxwrap">
+                                        <div class="personal-user-postimg">
+                                            <img [src]="share.Product.pictures[0]" />
+                                        </div>
+                                        <div class="product-details-info">
+                                            <h4>{{ share.Product.name }}</h4>
+                                            <span class="brand-name">{{ share.Product.brand }}</span>
+                                            <span class="share-price">$ {{ share.Product.salePrice }}</span>
+                                            <button [routerLink]="" (click)="buyNow(share.Product)" class="btn btn-primary">Buy Now</button>
+                                        </div>
+                                        <div class="received-action-item">
+                                            <div class="live-unlike">
+                                                <button [ngClass]="{'action-trans-btn' : true, 'like' : share.Like > 0}"
+                                                    (click)="OnClicklike(share, i)">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0V0z" fill="none" />
+                                                        <path
+                                                            d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" />
+                                                    </svg>
+                                                    <span class="btn-text">{{ share.TotalLike }}</span>
+                                                </button>
+                                                <button
+                                                    [ngClass]="{'action-trans-btn' : true, 'dislike' : share.Dislike > 0}"
+                                                    (click)="OnClickDislike(share, i)">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path
+                                                            d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z" />
+                                                    </svg>
+                                                    <span class="btn-text">{{ share.TotalDislike }}</span>
+                                                </button>
+                                            </div>
+                                            <button class="action-trans-btn comment" (click)="commentshow(i)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
+                                                    width="24">
+                                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                                    <path
+                                                        d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-3 12H7c-.55 0-1-.45-1-1s.45-1 1-1h10c.55 0 1 .45 1 1s-.45 1-1 1zm0-3H7c-.55 0-1-.45-1-1s.45-1 1-1h10c.55 0 1 .45 1 1s-.45 1-1 1zm0-3H7c-.55 0-1-.45-1-1s.45-1 1-1h10c.55 0 1 .45 1 1s-.45 1-1 1z" />
+                                                </svg>
+                                                <span class="btn-text">{{share.Comments.length}}</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--Comment-->
+                                    <div class="comment-row-wrap">
+                                        <div class="comment-listitem">
+                                            <div class="commentrow-list">
+                                                <div *ngFor="let comment of share.Comments">
+                                                    <div
+                                                        [ngClass]="{'comment-left' : share.User.Username == comment.CommentedBy.Username, 'comment-right' : share.User.Username != comment.CommentedBy.Username}">
+                                                        <div class="comment-user-img">
+                                                            <img src="/assets/images/brand06.jpg" />
+                                                        </div>
+                                                        <div class="msg-helpper">
+                                                            <div class="msg-info">
+                                                                <strong>{{comment.CommentedBy.FirstName}}</strong>
+                                                            </div>
+                                                            <div class="msg-word">
+                                                                <span>{{comment.Comment}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="comment-wrap">
+                                                <textarea placeholder="Write a Comment ..."
+                                                    [(ngModel)]="share.NewComment"></textarea>
+                                                <button type="button" class="cmt-btn"
+                                                    (click)="OnClickComment(share, i)">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Comment end-->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ngx-slick-carousel>
+        </div>
+    </div>
+    <div class="received-list-row" *ngIf="expiredShare.length > 0">
+        <div class="share-header-top">
+            <h2>Expired Requests</h2>
+        </div>
+        <div class="received-row-item">
+            <ngx-slick-carousel class="received-slider" #slickModal="slick-carousel" [config]="activeSliderConfig">
+                <div ngxSlickItem *ngFor="let share of expiredShare; let i = index;">
+                    <div class="received-col">
+                        <div class="received-box-wrap">
+                            <div class="received-user-row">
+                                <div class="received-user-item">
+                                    <div class="received-user-img">
+                                        <img [src]="share.User.ProfileImage"
+                                            onerror="this.src='assets/images/user.png';" alt="" />
+                                    </div>
+                                    <div class="received-user-info">
+                                        <div class="received-user-top">
+                                            <div class="received-user-name">{{ share.User.Username }}</div>
+                                        </div>
+                                        <span class="user-post-txt">{{ share.Product.name }}</span>
+                                    </div>
+                                </div>
+                                <div class="share-product-count">
+                                    <span class="time-display">Expired</span>
+                                </div>
+                            </div>
+                            <div class="active-product-row"
+                                [class.showcomment]="currentActiveIndex == i ? 'commentshow' : '' ">
+                                <div class="active-product-boxwrap">
+                                    <div class="personal-user-postimg">
+                                        <img [src]="share.Product.pictures[0]" />
+                                    </div>
+                                    <div class="product-details-info">
+                                        <h4>{{ share.Product.name }}</h4>
+                                        <span class="brand-name">{{ share.Product.brand }}</span>
+                                        <span class="share-price">$ {{ share.Product.salePrice }}</span>
+                                        <button [routerLink]="" (click)="buyNow(share.Product)" class="btn btn-primary">Buy Now</button>
+                                    </div>
+                                    <div class="received-action-item">
+                                        <div class="live-unlike">
+                                            <button class="action-trans-btn">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                                    <path
+                                                        d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" />
+                                                </svg>
+                                                <span class="btn-text">{{ share.TotalLike }}</span>
+                                            </button>
+                                            <button class="action-trans-btn">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path d="M0 0h24v24H0z" fill="none" />
+                                                    <path
+                                                        d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z" />
+                                                </svg>
+                                                <span class="btn-text">{{ share.TotalDislike }}</span>
+                                            </button>
+                                        </div>
+                                        <button class="action-trans-btn comment" (click)="commentshow(i)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
+                                                width="24">
+                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                <path
+                                                    d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-3 12H7c-.55 0-1-.45-1-1s.45-1 1-1h10c.55 0 1 .45 1 1s-.45 1-1 1zm0-3H7c-.55 0-1-.45-1-1s.45-1 1-1h10c.55 0 1 .45 1 1s-.45 1-1 1zm0-3H7c-.55 0-1-.45-1-1s.45-1 1-1h10c.55 0 1 .45 1 1s-.45 1-1 1z" />
+                                            </svg>
+                                            <span class="btn-text">{{share.Comments.length}}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--Comment-->
+                                <div class="comment-row-wrap">
+                                    <div class="comment-listitem">
+                                        <div class="commentrow-list">
+                                            <div *ngFor="let comment of share.Comments">
+                                                <div
+                                                    [ngClass]="{'comment-left' : share.User.Username == comment.CommentedBy.Username, 'comment-right' : share.User.Username != comment.CommentedBy.Username}">
+                                                    <div class="comment-user-img">
+                                                        <img src="/assets/images/brand06.jpg" />
+                                                    </div>
+                                                    <div class="msg-helpper">
+                                                        <div class="msg-info">
+                                                            <strong>{{comment.CommentedBy.FirstName}}</strong>
+                                                        </div>
+                                                        <div class="msg-word">
+                                                            <span>{{comment.Comment}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="comment-wrap">
+                                        <textarea placeholder="Write a Comment ..."
+                                            [(ngModel)]="share.NewComment"></textarea>
+                                        <button type="button" class="cmt-btn" (click)="OnClickComment(share, i)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div> -->
+                                    </div>
+                                </div>
+                                <!--Comment end-->
+                            </div>
+                            <!-- <div class="received-user-item">
+                            <div class="received-user-img">
+                                <img [src]="share.User.ProfileImage" onerror="this.src='assets/images/user.png';"  alt="" />
+                            </div>
+                            <div class="received-user-info">
+                                <div class="received-user-top">
+                                    <div class="received-user-name">{{ share.User.Username }}</div>
+                                    <span class="time-display">Expired</span>
+                                </div>
+                                <span class="user-post-txt">{{ share.Product.name }}</span>
+                            </div>
+                        </div> -->
+                            <!-- <div class="personal-user-postimg">
+                            <img
+                                [src]="share.Product.pictures[0]" />
+                        </div> -->
+                            <!-- <div class="received-action-item">
+                            <div class="live-unlike">
+                                <button class="action-trans-btn" (click)="OnClicklike(share)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M0 0h24v24H0V0z" fill="none" />
+                                        <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" />
+                                    </svg>                                    
+                                    <span class="btn-text">{{share.Like}}</span>
+                                </button>
+                                <button class="action-trans-btn" (click)="OnClickDislike(share)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z" />
+                                    </svg>
+                                    <span class="btn-text">{{share.Dislike}}</span>
+                                </button>
+                            </div>
+                            <button class="action-trans-btn comment" data-toggle="modal" data-target="#comment">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
+                                    width="24">
+                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                    <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-3 12H7c-.55 0-1-.45-1-1s.45-1 1-1h10c.55 0 1 .45 1 1s-.45 1-1 1zm0-3H7c-.55 0-1-.45-1-1s.45-1 1-1h10c.55 0 1 .45 1 1s-.45 1-1 1zm0-3H7c-.55 0-1-.45-1-1s.45-1 1-1h10c.55 0 1 .45 1 1s-.45 1-1 1z" />
+                                </svg>
+                                <span class="btn-text">5</span>
+                            </button>
+                        </div> -->
+                        </div>
+                    </div>
+                </div>
+            </ngx-slick-carousel>
+        </div>
+    </div>
+</div>

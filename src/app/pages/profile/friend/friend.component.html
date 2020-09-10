@@ -1,0 +1,147 @@
+<div class="profile-slide">
+  <div class="container">
+  	<div class="profile-toprow">
+      <img src="assets/images/profile-cover-bg.png" />       
+    </div>
+  </div>
+</div>
+
+<div class="profile-wrap">
+  <div class="container">
+    <!-- profile-->
+    <div class="profile-container">
+      <div class="pro-sidebar">
+        <app-profile-menu></app-profile-menu>
+      </div>
+      <div class="pro-rightwrap">
+        <!-- Freinds Page -->
+         <!-- Freinds Top Area -->
+         <div class="friend-top-area">
+          <h3>All Friends</h3>
+          <div class="friend-search-box">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <input type="text" placeholder="Search Friend by Username" [(ngModel)]="friendSearch" class="search-input" />
+          </div>
+        </div>
+        <!-- Freinds Top Area -->
+        <!-- Freinds List Item -->
+        <div class="friend-list-item">
+            <ul>
+              <li *ngFor="let friend of friends | friendsearch: friendSearch">
+                <div class="friend-box">
+                  <div class="friendleftbox">
+                    <div class="friend-img">
+                      <img [src]="friend.ProfileImage" onerror="this.src='assets/images/user.png';"  alt="..." />
+                    </div>
+                  </div>                 
+                  <div class="friends-info">
+                    <h4>{{friend.FirstName}} {{friend.LastName}}</h4>
+                    <p>@{{friend.Username}}</p>
+                  </div>               
+                  <div class="friend-action">
+                    <button type="button" class="remove-friend"
+                    (click)="OnClickRemoveFriend(friend)">
+                      
+                     <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><g><rect fill="none" height="24" width="24"/></g><g><path d="M14,8c0-2.21-1.79-4-4-4S6,5.79,6,8s1.79,4,4,4S14,10.21,14,8z M17,10v2h6v-2H17z M2,18v2h16v-2c0-2.66-5.33-4-8-4 S2,15.34,2,18z"/></g></svg>
+                    </button>
+                 </div>
+                </div>
+              </li>               
+            </ul>
+        </div>
+        <!-- Freinds List Item -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="profile-wrap" style="display: none;"> 
+  <div class="container">
+    <!-- profile top Header --->
+  	<div class="profile-toprow">
+      <img src="assets/images/profile-cover-bg.png" /> 
+      <div class="user-login-profile">
+          <div class="profile-img">
+           <img src={{user.ProfileImage}} onerror="this.src='assets/images/user.png';"  alt="..."/> 
+            <div class="profile-pic-chnge"> 
+              <input type="file" onChange="updateProfilePicture(this)" id="profile_image"/>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 4h-3.17L15 2H9L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h4.05l1.83-2h4.24l1.83 2H20v12zM12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"/></svg>
+            </div>
+          </div> 
+          <div class="user-personal-info">
+            <h3>{{user.FirstName}} {{user.LastName}}, <span>{{user.Age}}</span></h3>
+            <span class="user-location-info"> 
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              {{user.Address}} @ {{user.Username}}
+            </span>
+          </div>
+      </div>
+    </div>
+    <!-- profile top Header --->
+    <div class="profile-info-row">
+      <!-- profile Left Sidebar --->		
+		<div class="pro-sidebar">
+			<div class="pro-sidebar-box">
+				<ul class="profile-link">
+					<li>
+						<a href="#" class="active">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 10c2.7 0 5.8 1.29 6 2H6c.23-.72 3.31-2 6-2m0-12C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+							Friends
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 4h-3.17L15 2H9L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h4.05l1.83-2h4.24l1.83 2H20v12zM12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"/></svg>
+							Add Size
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>	
+    <!-- profile Left Sidebar End --->
+    
+    <!-- profile Right Sidebar --->	
+    <div class="profile-right-info">
+        <!-- Freinds Top Area -->
+        <div class="friend-top-area">
+          <h3>All Friends</h3>
+          <div class="friend-search-box">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <input type="text" placeholder="Search Friend by Username" [(ngModel)]="friendSearch" class="search-input" />
+          </div>
+        </div>
+        <!-- Freinds Top Area -->
+        <!-- Freinds List Item -->
+        <div class="friend-list-item">
+            <ul>
+              <li *ngFor="let friend of friends | friendsearch: friendSearch">
+                <div class="friend-box">
+                  <div class="friendleftbox">
+                    <div class="friend-img">
+                      <img [src]="friend.ProfileImage" onerror="this.src='assets/images/user.png';"  alt="..." />
+                    </div>
+                  </div>                 
+                  <div class="friends-info">
+                    <h4>{{friend.Username}}</h4>
+                    <p>@{{friend.Username}}</p>
+                  </div>               
+                  <div class="friend-action">
+                    <button type="button" class="remove-friend">
+                     <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><g><rect fill="none" height="24" width="24"/></g><g><path d="M14,8c0-2.21-1.79-4-4-4S6,5.79,6,8s1.79,4,4,4S14,10.21,14,8z M17,10v2h6v-2H17z M2,18v2h16v-2c0-2.66-5.33-4-8-4 S2,15.34,2,18z"/></g></svg>
+                    </button>
+                 </div>
+                </div>
+              </li>               
+            </ul>
+        </div>
+        <!-- Freinds List Item -->
+    </div>
+    <!-- profile Right End --->	
+    </div>
+
+
+  </div>
+</div>

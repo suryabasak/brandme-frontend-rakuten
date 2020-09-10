@@ -1,0 +1,13 @@
+<div class="banner-img">
+  <img src="/assets/images/banner-img.jpg" />
+</div>
+<div class="share-tab-wrapper">
+  <div class="container">
+    <ul class="share-tabs">
+      <li><a [routerLinkActive]="['active']" [routerLink]="[ '/share/active' ]">Active</a></li>
+      <li><a [routerLinkActive]="['active']" [routerLink]="[ '/share/personal' ]">Personal</a></li>
+      <li><a [routerLinkActive]="['active']" [routerLink]="['/share/brands']">Brands</a></li>
+    </ul>
+  </div>
+</div>
+<router-outlet></router-outlet>

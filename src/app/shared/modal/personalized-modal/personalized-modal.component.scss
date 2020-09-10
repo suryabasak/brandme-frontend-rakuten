@@ -1,0 +1,323 @@
+
+.modal-inner-container{
+    width: 100%;
+}
+.modal-inner-content{
+  background: #f7f7f7;
+  border-radius: 4px;
+}  
+.modal-top-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+.modal-body-content{
+  
+  // height: 455px;
+  // overflow: auto;
+}
+.slick-scroll-wrap{
+  padding-left: 15px;
+  height: 455px;
+  overflow-y: auto;
+}
+.category-list-row{
+  display: flex;
+  flex-wrap: wrap;
+}
+.category-list-item{
+  width: 16.50%;
+  padding: 0 10px;
+}
+.category-box{
+  background: #ffffff;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+}
+.category-img{
+  padding: 0 15px;
+  text-align: center;
+  img{
+      display: inline-block;
+      height: 100px;
+  }
+}
+.category-name{
+  background: #fafafa;
+  padding: 10px 15px;
+  span{
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+      font-weight: 500;
+      // word-break: break-word;
+      line-height: 1.2;
+      // min-height: 42px;
+      // align-items: center;
+  }
+}
+.label-category{
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+.label-category input[type='checkbox']{
+  display: none;
+}
+.select-category{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border:6px solid #f7f5f6;
+  border-radius: 100%;
+  width: 15px;
+  height: 15px;
+  background: #ffffff;   
+  svg{
+      display: none;
+      width: 15px;
+      height: 15px;
+      fill: #ffffff;
+  }
+}
+
+.label-category input[type='checkbox']:checked+.category-box .select-category {
+ box-shadow: 0 0 10px rgba(0,0,0,.45);
+ width: 24px;
+ height: 24px;
+ border: 1px solid #4eab48;
+ padding: 1px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background: transparent;
+ svg{
+  display: block;
+  position: relative;
+  z-index: 1;
+ }
+ &::before{
+      position: absolute;
+      content: '';
+      left: 2px;
+      top: 2px;
+      position: absolute;
+      background: #4eab48;      
+      width: 18px;
+      height: 18px;
+      border-radius: 100%;
+  }
+}
+.label-category input[type='checkbox']:checked+.category-box .category-name{
+  background: rgba(0,0,0,.85);
+  span{
+      color: #ffffff;
+  }
+}
+.modal-bottom-action{
+  padding: 25px 25px;
+  display: flex;
+  justify-content: flex-end;
+  .btn-next{
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    font-size: 17px;
+    color: #1876f2;
+    font-weight: 500;
+    &:focus{
+      outline: none;
+    }
+  }
+  svg{
+    width: 22px;
+    height: 22px;
+    fill: #1876f2;
+    margin-left: 8px;
+    transform: rotate(180deg);
+    position: relative;
+    top: 2px;
+  }
+}
+
+.category-search-box{
+  width: 308px;
+  position: relative;
+}
+.category-search-box svg{
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  fill: #bdbcbf;
+  width: 24px;
+  height: 24px;
+}
+.search-input{
+  width: 100%;
+  background: #ffffff;  
+  box-shadow: hsl(0, 0%, 90%) 0 0 10px;
+  border: 1px solid #ffffff;
+  border-radius: 25px;
+  padding: 10px 15px 10px 50px;
+  outline: none;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.search-input:focus{
+   border-color: #5873cc;
+} 
+.btn-primary{
+    min-width: 130px;    
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.27);
+}
+
+/* User Info */
+.user-row-info{
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+.user-leftrow{
+  width: 40%;
+  padding: 25px;
+}
+.user-header-info{
+  h4{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #464c71;
+    margin-bottom: 5px;
+  }
+  p{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 22px;
+    color: #000000;
+  }
+}
+.gender-row{
+  background: url(/assets/images/gender-bg.png) 0 0 no-repeat;
+  height: 160px;  
+  margin-bottom: 35px;
+}
+.gender-label-row{
+  display: flex;
+  padding-top: 42px;
+  margin-left: 40px;
+}
+.gender-label-display{
+  position: relative;
+  cursor: pointer;
+  display: block;
+  margin: 0 22px;
+}
+.gender-label-display input[type='radio']{
+  display: none;
+}
+.gender-box{
+  position: relative;
+  opacity: .65;
+}
+.select-check{
+  position: absolute;
+  right: 0;
+  bottom: 25px;
+  background: #f77776;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  svg{
+    width: 15px;
+    height: 15px;
+    fill: #ffffff;
+  }
+}
+.gender-label-display input[type='radio']:checked+.gender-box {
+  opacity: 1;
+}
+
+.gender-label-display input[type='radio']:checked+.gender-box .gender-img-box .select-check{
+  display: flex;
+}
+
+
+
+.label-select-info{
+  display: block;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #ff716d;
+}
+.fill-form-group{
+  label{
+    margin-bottom: 0;
+  }
+  .form-group{
+    margin-bottom: 15px;    
+  }
+}
+select.form-control {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  height: auto;
+}
+.form-control {
+  background: transparent;
+  border: 1px solid #cdd6e3;
+  border-radius: 4px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-weight: 500;
+  transition: border .5s ease-in-out;
+
+  &:focus {
+      border-color: #000000;
+      box-shadow: none;
+  }
+}
+.user-rightrow{
+  width: 60%;
+  // background: #ffd9d8;
+  padding: 20px 40px;
+}
+.full-widtth-img-box{
+  padding-top: 15px;
+//  background: #ffffff;
+//   padding: 5px;
+//   border-radius: 8px;
+//   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  img{
+    width: 100%;
+  }
+}
+.user-rightheader{
+  h2{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #464c71;
+  }
+  p{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    line-height: 22px;
+    color: #000000;
+  }
+}

@@ -1,0 +1,9 @@
+<div class="search-product">
+  <ngx-slick-carousel class="related-pro" #slickModal="slick-carousel" [config]="styleSliderConfig">
+      <div ngxSlickItem *ngFor="let product of products">
+          <div class="product-box">
+              <app-product [product]="product"></app-product>
+          </div>
+      </div>
+  </ngx-slick-carousel>
+</div>

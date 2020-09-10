@@ -1,0 +1,36 @@
+<div class="share-header">
+    <div class="modal-close">
+        <button type="button" #closebutton class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div *ngIf="friends">
+        <div class="share-friend-list">
+            <ul>
+                <li *ngFor="let friend of friends; let i = index;">
+                    <input type="checkbox" [id]="i" [(ngModel)]="friend.isChecked" />
+                    <label class="" [for]="i">
+                        <div class="share-wrap">
+                            <div class="share-user-img">
+                                <img [src]="friend.ProfileImage" onerror="this.src='assets/images/user.png';"
+                                    alt="..." />
+                            </div>
+                            <div class="share-user-info">
+                                <h5>{{ friend.Username }}</h5>
+                            </div>
+                        </div>
+                        <span class="share-check"></span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <div class="share-time-count">
+            <label>Select Countdown Time (In Mins)</label>
+            <input type="number" [(ngModel)]="time" />
+        </div>
+        <div class="share-action">
+            <button class="btn btn-primary" id="closeModal" data-dismiss="modal" (click)="shareProduct()">Share</button>
+        </div>
+    </div>
+    <div *ngIf="!friends">
+        <h3>Please login to share a product.</h3>
+    </div>
+</div>

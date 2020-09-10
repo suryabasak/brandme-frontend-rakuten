@@ -1,0 +1,129 @@
+/* Home Feed Wrapper */
+.home-feed-wrapper {
+    background: #f7f7f7;
+    padding: 25px 0;
+}
+
+.feed-list-item {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.feed-list-col {
+    width: 33.333%;
+    padding: 0 15px;
+    margin-bottom: 30px;
+}
+
+.feed-box {
+    // background: #fff;
+    border-radius: 8px;
+    transition: all .5s ease-in;
+    min-height: 420px;
+    padding: 20px;
+
+    &:hover {
+        background: #fff;
+        box-shadow: 0 0 10px 5px rgb(86.7%, 89.8%, 92.2%)
+    }
+}
+
+.feed-header {
+    margin-bottom: 10px;
+
+    h2 {
+        max-height: 55px;
+        font-size: 20px;
+        line-height: 1.2;
+        color: #000;
+        text-transform: none;
+        margin: 0
+    }
+}
+
+.feed-product-box {
+    height: 400px;
+    .feed-product-img{
+        height: 100%;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .feed-grid-row {
+        height: 50%;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+
+    .feed-product-col {
+        width: 50%;
+        padding: 0 5px;
+    }
+
+    .feed-product-box {
+        height: 100%;
+        padding-bottom: 45px;
+        position: relative;
+
+        .feed-product-img {
+            background: #ffffff;
+            height: 100%;
+            position: relative;
+            img {
+                // border: 1px solid rgba(0,0,0,.1);
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+
+    }
+    
+}
+
+.feed-product-name {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #000000;
+    display: -webkit-box;    
+    -webkit-box-orient: vertical;    
+    -webkit-line-clamp: 2;    
+    overflow: hidden;
+    height: 35px;
+}
+
+.white-bg {
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.product-load{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(.5);
+}
+
+ /* Break Points */
+ @media screen and (max-width: 1199px) {
+    .feed-list-col{
+        width: 50%;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .feed-list-col{
+        width: 100%;
+    }
+  }  

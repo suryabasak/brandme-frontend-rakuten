@@ -1,0 +1,131 @@
+/* Share Friend Modal */
+.modal-close{
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  button{
+      background: #ffffff;
+      border: none;
+      box-shadow: 0 0 5px rgba(0,0,0,.1);
+      border-radius: 100%;
+      width: 30px;
+      height: 30px;
+      text-shadow: none;
+      opacity: 1;
+      outline: none;
+      &:hover{
+          opacity: 1;
+      }
+  }
+}
+.share-header{
+  padding: 15px 16px 10px;
+  position: relative;
+}
+.share-friend-list{
+  background: #f5f7fb;
+  padding: 12px 16px 0;
+  ul{
+      li{
+          position: relative;
+          display: block;
+          padding: 5px 16px;
+          background: #fff;
+          border-radius: 5px;
+          margin-bottom: 12px;
+          box-shadow: 0 0 5px rgba(0,0,0,.1);
+          input{
+              position: absolute;
+              left: 0;
+              top: 0;
+              display: none;
+          }
+          label{
+              position: relative;
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-bottom: 0;;
+              .share-wrap{
+                  display: flex;
+                  align-items: center;
+                  .share-user-img {
+                      flex: 0 0 auto;        
+                      img {
+                          width: 45px;
+                          height: 45px;
+                          border-radius: 100%;
+                          object-fit: cover;                           
+                      }
+                  }
+                  .share-user-info{
+                      flex: 1 1 auto;
+                      margin-left: 15px;
+                      h5 {
+                          font-size: 15px;
+                          font-weight: 600;
+                          line-height: 1.2;
+                          color: #353b50;
+                          letter-spacing: 0;
+                          margin-bottom: 5px;
+                      }
+                  }
+              }
+              .share-check{
+                  position: relative;
+                  display: block;
+                  width: 20px;
+                  height: 20px;
+                  background: #ffffff;
+                  border: 1px solid #dfdfdf;
+                  border-radius: 3px;
+                  &::before{
+                      position: absolute;
+                      content: '';
+                      left: 3px;
+                      top: 4px;
+                      display: none;
+                      background: url(/assets/images/checked-icon.png);
+                      width: 11px;
+                      height: 9px;
+                  }
+              }
+          }
+      }
+  }
+}
+.share-friend-list ul li input[type=checkbox]:checked+label .share-check{
+  background: #ff6462;
+  border-color: #ff6462;
+}
+.share-friend-list ul li input[type=checkbox]:checked+label .share-check:before{
+  display: block;
+}
+.share-time-count{
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  label{
+      margin-right: 15px;
+      font-weight: 600;
+      margin-top: 5px;
+  }
+  input{
+      width: 80px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      height: 34px;
+      padding: 0 15px;
+  }
+}
+.share-action{
+  text-align: center;
+  padding: 15px 0 25px;
+  .btn-primary {
+      min-width: 140px;
+      border-radius: 30px;
+      box-shadow: 0 8px 6px -6px rgba(163, 33, 50, .5);
+  }
+}

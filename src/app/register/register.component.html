@@ -1,0 +1,68 @@
+<div class="login-wrap">
+    <div class="login-container">
+        <div class="login-inner-wrap">
+            <div class="login-leftwrap">
+                <img src="assets/images/login-img01.jpg" alt="" />
+                <div class="login-caption">
+                    <ul>
+                        <li>Shop</li>
+                        <li>Share</li>
+                        <li>Store</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="login-rightwrap">
+                <div class="form-row">
+                    <div class="logo-box">
+                        <img src="assets/images/login-logo.png" alt="" />
+                    </div>
+                    <form class="theme-form" id="registerForm" (ngSubmit)="onSubmit()">
+                        <div class="login-form-container">
+                            <h3>Create Account</h3>
+                            <p>Already have an account? <a routerLink="/login">Sign in.</a></p>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="Firstname" placeholder="First Name"
+                                    [(ngModel)]="userModel.FirstName" required="" name="FirstName">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="Lastname" placeholder="Last Name"
+                                    [(ngModel)]="userModel.LastName" required="" name="LastName">
+                            </div>
+                            <div class="form-group">
+                                <input type="Email" class="form-control" id="Email" placeholder="Email"
+                                    [(ngModel)]="userModel.Email" required="" name="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="Password" class="form-control" id="Password"
+                                    placeholder="Enter your password" [(ngModel)]="userModel.Password" required=""
+                                    name="Password">
+                            </div>
+                            <!-- <div class="form-group">
+                            <input type="Username" class="form-control" id="Username" placeholder="Username"
+                            [(ngModel)]="userModel.Username" required="" name="Username">                           
+                        </div>   -->
+                            <div class="form-group">
+                                <label class="label-field">Gender</label>
+                                <div class="gender-field">
+                                    <div class="check-field">
+                                        <input type="radio" name="gender" id="male" [(ngModel)]="userModel.Gender"
+                                            value="Male">
+                                        <label for="male">Male</label>
+                                    </div>
+                                    <div class="check-field">
+                                        <input type="radio" name="gender" id="female" [(ngModel)]="userModel.Gender"
+                                            value="Female">
+                                        <label for="female">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="login-action">
+                            <button class="btn btn-solid" (ngSubmit)="onSubmit()">Create Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

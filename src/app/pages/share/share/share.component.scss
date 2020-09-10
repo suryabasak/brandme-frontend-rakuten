@@ -1,0 +1,65 @@
+.banner-img{
+    img{
+        width: 100%;
+    }
+}
+.share-tab-wrapper {
+    background-image: url("/assets/images/bg-image.jpg");
+    background-repeat: repeat;
+    .share-tabs {
+        li {
+            width: 33.333%;
+            text-align: center;
+
+            a {
+                display: inline-block;
+                color: #444444;
+                font-size: 18px;
+                line-height: 1.2;
+                padding: 25px 20px;
+                position: relative;
+
+                &::before {
+                    position: absolute;
+                    content: '';
+                    left: 0;
+                    bottom: 0;
+                    transition: all .5s ease-in;
+                    width: 0px;
+                    height: 3px;
+                    background: #d61f27;
+                }
+                &.active{
+                    font-weight: 700;
+                }
+                &.active,
+                &:hover {
+                    
+                    color: #d61f27;
+                    &::before {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Break Points */
+@media screen and (max-width: 767px) {
+    .share-tab-wrapper {
+        .share-tabs {
+            li{
+                a{
+                    font-size: 16px;
+                    padding: 12px 15px;
+                }
+            }
+        }
+    }   
+  }
+
+
+
+
+

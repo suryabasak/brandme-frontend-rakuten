@@ -1,0 +1,19 @@
+<div class="brands-wrap">
+  <div class="container">
+    <div class="brands-row" *ngIf="brands">
+      <ngx-masonry [ordered]="true">
+        <div ngxMasonryItem class="brands-item" *ngFor="let brand of brands">
+          <div class="brand-card" (click)="getProducts(brand.brand)">
+            <div class="brand-imgbox">
+              <img [src]="brand.product? brand.product.pictures[0] : ''" />
+            </div>
+            <h4>{{brand.brand}}</h4>
+          </div>
+        </div>
+      </ngx-masonry>
+    </div>
+    <div *ngIf="!brands" class="brands-loader">
+      <app-loader></app-loader>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="posted-wrap">
+  <div class="container">
+    <div class="posted-loader" *ngIf="!postedShares">
+      <app-loader></app-loader>
+    </div>
+    <div *ngIf="postedShares">
+      <div class="personal-feed-item" *ngFor="let share of postedShares, let i = index">
+        <div class="share-product-card">
+          <div class="share-product-box">
+            <div class="share-product-img">
+              <img [src]="share.Product.pictures[0]" />
+            </div>
+            <div class="share-product-info">
+              <div class="share-product-item">
+                <h4>{{ share.Product.name }}</h4>
+                <span class="brand-name">{{ share.Product.brand }}</span>
+                <span class="share-price">$ {{ share.Product.salePrice }}</span>
+                <p>{{ share.Product.shortDetails }}</p>
+
+                <!-- <ul>
+                  <li>{{ product.Product.tags[0] }}</li>
+                  <li>{{ product.Product.tags[1] }}</li>
+                  <li>{{ product.Product.tags[2] }}</li>
+                </ul>                      -->
+                <button [routerLink]="" (click)="buyNow(share.Product)" class="btn btn-primary">Buy Now</button>
+              </div>
+            </div>
+          </div>
+          <!-- Action Area-->
+          <div class="feed-comment-row">
+            <div class="feed-comment-list" *ngFor="let Comment of share.Comments">
+              <div class="comment-user-img"><img [src]="Comment.CommentedBy.ProfileImage"
+                  onerror="this.src='assets/images/user.png';"></div>
+              <div class="comment-user-info">
+                <p><strong>{{Comment.CommentedBy.Username}}</strong>
+                  <span>{{Comment.Comment}}</span>
+                </p>
+                <span class="recent-post-time">{{Comment.CommentedOn}}</span>
+              </div>
+            </div>
+            <div class="comment-bottom-area" *ngIf="!share.IsExpired">
+              <div class="comment-user-img"><img [src]="user.ProfileImage"
+                  onerror="this.src='assets/images/user.png';" alt="..."></div>
+              <div class="comment-wrap">
+                <textarea placeholder="Write a Comment ..." [(ngModel)]="share.NewComment"></textarea>
+                <button type="button" class="cmt-btn" (click)="OnClickComment(share, i)">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

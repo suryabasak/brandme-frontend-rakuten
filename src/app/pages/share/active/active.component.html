@@ -1,0 +1,18 @@
+<div class="share-active-tab">
+  <ul class="active-tabs">
+      <li><a [routerLinkActive]="['active']" [routerLink]="[ '/share/active/received' ]">Received</a></li>
+      <li><a [routerLinkActive]="['active']" [routerLink]="[ '/share/active/posted' ]">Posted</a></li>
+  </ul>
+</div>
+<div class="share-tab-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="col-md-4">
+        <app-notification></app-notification>
+      </div>
+    </div>
+  </div>
+</div>

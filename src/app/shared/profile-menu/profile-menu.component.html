@@ -1,0 +1,51 @@
+<div class="pro-sidebar-box">
+  <div class="profile-user-box"></div>
+  <div class="profile-user-wrap">
+    <div class="profile-user-img">
+      <img src={{user.ProfileImage}} onerror="this.src='assets/images/user.png';"  alt="..."/> 
+    </div>
+    <h3>{{user.FirstName}} {{user.LastName}}</h3>
+  </div>
+  <ul class="profile-link">
+    <li *ngFor="let menuitem of profilemenu">
+      <a [href]="menuitem.link" routerLinkActive="router-link-active" >
+        <i class="fa {{menuitem.icon}}"></i> {{menuitem.menutitle}}
+      </a>
+    </li>
+    <!-- <li>
+      <a href="#" class="active">
+        <i class="fa cognos-icon"></i> Cognos
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa measurements-icon"></i> Measurements
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa payment-icon"></i> Payment
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa address-icon"></i> Address
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa style-icon"></i> Style
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa archive-icon"></i> Archive
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa orders-icon"></i> Orders
+      </a>
+    </li>           -->
+  </ul>
+</div>

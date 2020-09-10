@@ -1,0 +1,18 @@
+<div class="recent-view">
+  <div class="noti-header">
+    <h4>Notifications</h4>
+    <span class="noti-badge"
+      *ngIf="oldNotificationsCount != newNotificationsCount" (click)="forceRefreshNotifications()">{{newNotificationsCount - oldNotificationsCount}}</span>
+  </div>
+  <div class="noti-wwrap-item">
+    <div class="recent-list-item" *ngFor="let notification of notifications">
+      <div class="recent-user-img">
+        <img [src]="notification.ProfileImage" onerror="this.src='assets/images/user.png';" />
+      </div>
+      <div class="recent-user-info">
+        <p><strong>{{notification.Name}}</strong> {{notification.Content}}</p>
+        <span class="recent-post-time">{{notification.TimeDuration}}</span>
+      </div>
+    </div>
+  </div>
+</div>

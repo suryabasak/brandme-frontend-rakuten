@@ -1,0 +1,328 @@
+.personal-loader{
+    height: 400px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.personal-wrap{
+    background: #f7f7f7;
+    padding: 50px 0;
+}
+/* Personal Feed Item */
+.personal-feed-item{
+    padding-right: 10%;
+}
+   .feed-list-item{
+       margin-bottom: 20px;       
+   }
+   .personal-user-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    .personal-user-img {
+        width: 45px;
+        height: 45px;
+        background: #ffffff;
+        border-radius: 100%;
+        box-shadow: 0 4px 10px -5px rgba(0, 0, 0, 0.5);
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .personal-user-info {
+        margin-left: 15px;
+        .personal-user-name{
+            font-size: 17px;
+            line-height: 1.2;
+            font-weight: 600;
+            color: #353b50;
+            margin-top: 5px;
+        }   
+        .user-post-txt {
+            display: block;
+            margin-top: 5px;
+            font-size: 15px;
+            line-height: 1.2;
+            color: #353b50;
+        }     
+    }
+}
+   .feed-post-card{
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    .feed-post-img{
+       text-align: center;
+        img{
+            max-height: 450px;
+        }
+    }    
+   }
+   .personal-action-item {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    padding: 15px 15px;            
+    .action-trans-btn {
+        display: flex;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .btn-text {
+            display: inline-block;
+            font-size: 18px;
+            line-height: 1.2;
+            color: #000000;
+            margin-left: 8px;
+        }
+
+        &.like {
+            svg {
+                fill: #1876f2;
+            }    
+        }
+        &.bookmark {
+            svg {
+                fill: #000000;
+            }
+        }
+        &.share {
+            svg {
+                fill: #fcbe32;
+            }
+        }
+    }
+}
+
+/* Feed Comment Area*/
+.feed-comment-row{
+    border-top: 1px solid rgba(0,0,0,.15);
+    margin: 0 16px;
+    padding: 16px 0;
+    .feed-comment-list{
+        display: flex;
+        margin-bottom: 12px;
+    } 
+        .comment-user-img{
+            flex: 0 0 auto;
+            width: 50px;
+            height: 50px;
+            img{
+                width: 100%;
+                height: 100%;
+                border-radius: 100%;
+                object-fit: cover;
+            }
+        }
+        .comment-user-info{
+            flex: 1 1 auto;
+            padding-left: 15px;
+            p{
+                font-size: 15px;
+                line-height: 20px;
+                color: rgba(0,0,0,.85);
+                margin-bottom: 5px;
+                span{
+                    display: block;
+                }
+                strong{
+                    font-weight: 600;
+                }
+            }
+            .recent-post-time{
+                display: block;
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 1.2;
+                color: #1876f2;
+            }
+        }
+    
+    .comment-bottom-area{
+        display: flex;
+        .comment-user-img{
+            margin-right: 15px;
+        }
+    }
+    .comment-wrap{
+        flex: 1 1 auto;   
+        position: relative;
+        textarea{
+            width: 100%;
+            resize: none;
+            background: #f0f2f5;
+            height: 44px;
+            border-radius: 35px;
+            border: none;
+            padding: 8px 25px;
+        }    
+        .cmt-btn{
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #5873cc;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            border: none;
+            outline: none;
+            svg {
+                fill: #ffffff;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}
+
+/* Share Friend Modal */
+.modal-close{
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    button{
+        background: #ffffff;
+        border: none;
+        box-shadow: 0 0 5px rgba(0,0,0,.1);
+        border-radius: 100%;
+        width: 30px;
+        height: 30px;
+        text-shadow: none;
+        opacity: 1;
+        outline: none;
+        &:hover{
+            opacity: 1;
+        }
+    }
+}
+.share-header{
+    padding: 15px 16px 10px;
+    position: relative;
+}
+.share-friend-list{
+    background: #f5f7fb;
+    padding: 12px 16px 0;
+    ul{
+        li{
+            position: relative;
+            display: block;
+            padding: 5px 16px;
+            background: #fff;
+            border-radius: 5px;
+            margin-bottom: 12px;
+            box-shadow: 0 0 5px rgba(0,0,0,.1);
+            input{
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: none;
+            }
+            label{
+                position: relative;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 0;;
+                .share-wrap{
+                    display: flex;
+                    align-items: center;
+                    .share-user-img {
+                        flex: 0 0 auto;        
+                        img {
+                            width: 45px;
+                            height: 45px;
+                            border-radius: 100%;
+                            object-fit: cover;                           
+                        }
+                    }
+                    .share-user-info{
+                        flex: 1 1 auto;
+                        margin-left: 15px;
+                        h5 {
+                            font-size: 15px;
+                            font-weight: 600;
+                            line-height: 1.2;
+                            color: #353b50;
+                            letter-spacing: 0;
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+                .share-check{
+                    position: relative;
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                    background: #ffffff;
+                    border: 1px solid #dfdfdf;
+                    border-radius: 3px;
+                    &::before{
+                        position: absolute;
+                        content: '';
+                        left: 3px;
+                        top: 4px;
+                        display: none;
+                        background: url(/assets/images/checked-icon.png);
+                        width: 11px;
+                        height: 9px;
+                    }
+                }
+            }
+        }
+    }
+}
+.share-friend-list ul li input[type=checkbox]:checked+label .share-check{
+    background: #ff6462;
+    border-color: #ff6462;
+}
+.share-friend-list ul li input[type=checkbox]:checked+label .share-check:before{
+    display: block;
+}
+.share-time-count{
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    label{
+        margin-right: 15px;
+        font-weight: 600;
+        margin-top: 5px;
+    }
+    input{
+        width: 80px;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        height: 34px;
+        padding: 0 15px;
+    }
+}
+.share-action{
+    text-align: center;
+    padding: 15px 0 25px;
+    .btn-primary {
+        min-width: 140px;
+        border-radius: 30px;
+        box-shadow: 0 8px 6px -6px rgba(163, 33, 50, .5);
+    }
+}
+
+@media (max-width: 480px) {
+    .personal-feed-item{
+        padding-right: 0;
+    }
+}

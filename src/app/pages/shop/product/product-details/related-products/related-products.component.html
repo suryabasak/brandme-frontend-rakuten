@@ -1,0 +1,34 @@
+<!-- product section start -->
+<section class="section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 product-related">
+                <h2>Recomended Products</h2>
+            </div>
+        </div>
+        <!-- <div class="search-product" *ngIf="products.length > 0">
+            <div class="col-xl-2 col-md-4 col-sm-6" *ngFor="let product of products | slice:0:6">
+                <div class="product-box">
+                    <app-product [product]="product"></app-product>
+                </div>
+            </div>
+        </div> -->
+        <div class="search-product" *ngIf="products.length > 0">
+            <ngx-slick-carousel class="related-pro" #slickModal="slick-carousel" [config]="relatedSliderConfig">
+                <div ngxSlickItem *ngFor="let product of products">
+                    <div class="product-box">
+                        <app-product [product]="product"></app-product>
+                    </div>
+                </div>
+            </ngx-slick-carousel>
+        </div>
+
+
+
+        <div class="product-load" *ngIf="products.length == 0">
+            <app-loader></app-loader>
+        </div>
+    </div>
+</section>
+<!-- product section end -->
+<app-quick-view></app-quick-view>

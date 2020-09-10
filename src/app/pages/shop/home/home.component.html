@@ -1,0 +1,443 @@
+<app-slider></app-slider>
+
+<div class="home-feed-wrapper">
+    <div class="container">
+        <div class="feed-list-item" *ngIf="user">
+            <div class="feed-list-col" *ngFor="let card of personalizedProducts"
+                (click)="navigateToList(card.category)">
+                <div class="feed-box white-bg">
+                    <div class="feed-header">
+                        <h2>{{card.category}}</h2>
+                    </div>
+                    <div class="feed-product-box">
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="card.products[0]">
+                                    <div class="feed-product-img">
+                                        <img [src]="card.products[0].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{ card.products[0].name }}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!card.products[0]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="card.products[1]">
+                                    <div class="feed-product-img">
+                                        <img [src]="card.products[1].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{ card.products[1].name }}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!card.products[1]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="card.products[2]">
+                                    <div class="feed-product-img">
+                                        <img [src]="card.products[2].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{ card.products[2].name }}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!card.products[2]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="card.products[3]">
+                                    <div class="feed-product-img">
+                                        <img [src]="card.products[3].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{ card.products[3].name }}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!card.products[3]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feed-list-item" *ngIf="!user">
+            <div class="feed-list-col" (click)="navigateToList('Tops')">
+                <div class="feed-box white-bg">
+                    <div class="feed-header">
+                        <h2>Fashion Anytime</h2>
+                    </div>
+                    <div class="feed-product-box">
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="fasionAnytime[0]">
+                                    <div class="feed-product-img">
+                                        <img [src]="fasionAnytime[0].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{ fasionAnytime[0].name }}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!fasionAnytime[0]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="fasionAnytime[1]">
+                                    <div class="feed-product-img">
+                                        <img [src]="fasionAnytime[1].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{ fasionAnytime[1].name }}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!fasionAnytime[1]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="fasionAnytime[2]">
+                                    <div class="feed-product-img">
+                                        <img [src]="fasionAnytime[2].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{ fasionAnytime[2].name }}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!fasionAnytime[2]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="fasionAnytime[3]">
+                                    <div class="feed-product-img">
+                                        <img [src]="fasionAnytime[3].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{ fasionAnytime[3].name }}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!fasionAnytime[3]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feed-list-col" (click)="navigateToList('Shoes')">
+                <div class="feed-box white-bg">
+                    <div class="feed-header">
+                        <h2>Latest Shoes</h2>
+                    </div>
+                    <div class="feed-product-box">
+                        <div class="feed-product-img" *ngIf="products.length > 0">
+                            <img src="assets/images/Shoes.jpg" alt="" />
+                        </div>
+                        <div class="product-load" *ngIf="products.length == 0">
+                            <app-loader></app-loader>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feed-list-col" (click)="navigateToList('Eyewear')">
+                <div class="feed-box white-bg">
+                    <div class="feed-header">
+                        <h2>Latest Eyewear</h2>
+                    </div>
+                    <div class="feed-product-box">
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="eyewears[0]">
+                                    <div class="feed-product-img">
+                                        <img [src]="eyewears[0].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{eyewears[0].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!eyewears[0]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="eyewears[1]">
+                                    <div class="feed-product-img">
+                                        <img [src]="eyewears[1].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{eyewears[1].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!eyewears[1]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="eyewears[2]">
+                                    <div class="feed-product-img">
+                                        <img [src]="eyewears[2].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{eyewears[2].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!eyewears[2]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="eyewears[3]">
+                                    <div class="feed-product-img">
+                                        <img [src]="eyewears[3].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{eyewears[3].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!eyewears[3]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feed-list-col" (click)="navigateToList('Personal Care Accessories')">
+                <div class="feed-box white-bg">
+                    <div class="feed-header">
+                        <h2>Avatar Accessories</h2>
+                    </div>
+                    <div class="feed-product-box">
+                        <div class="feed-product-img" *ngIf="products.length > 0">
+                            <img src="assets/images/brand01.jpg" alt="" />
+                        </div>
+                        <div class="product-load" *ngIf="products.length == 0">
+                            <app-loader></app-loader>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feed-list-col" (click)="navigateToList('Headwear')">
+                <div class="feed-box white-bg">
+                    <div class="feed-header">
+                        <h2>Head Wear</h2>
+                    </div>
+                    <div class="feed-product-box">
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="headWears[0]">
+                                    <div class="feed-product-img">
+                                        <img [src]="headWears[0].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{headWears[0].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!headWears[0]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="headWears[1]">
+                                    <div class="feed-product-img">
+                                        <img [src]="headWears[1].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{headWears[1].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!headWears[1]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="headWears[2]">
+                                    <div class="feed-product-img">
+                                        <img [src]="headWears[2].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{headWears[2].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!headWears[2]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="headWears[3]">
+                                    <div class="feed-product-img">
+                                        <img [src]="headWears[3].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{headWears[3].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!headWears[3]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feed-list-col" (click)="navigateToList('Home')">
+                <div class="feed-box white-bg">
+                    <div class="feed-header">
+                        <h2>Home Needs</h2>
+                    </div>
+                    <div class="feed-product-box">
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="homeNeeds[0]">
+                                    <div class="feed-product-img">
+                                        <img [src]="homeNeeds[0].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{homeNeeds[0].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!homeNeeds[0]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="homeNeeds[1]">
+                                    <div class="feed-product-img">
+                                        <img [src]="homeNeeds[1].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{homeNeeds[1].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!homeNeeds[1]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="homeNeeds[2]">
+                                    <div class="feed-product-img">
+                                        <img [src]="homeNeeds[2].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{homeNeeds[2].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!homeNeeds[2]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="homeNeeds[3]">
+                                    <div class="feed-product-img">
+                                        <img [src]="homeNeeds[3].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{homeNeeds[3].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!homeNeeds[3]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feed-list-col" (click)="navigateToList('Fragrance')">
+                <div class="feed-box white-bg">
+                    <div class="feed-header">
+                        <h2>Fragrance</h2>
+                    </div>
+                    <div class="feed-product-box">
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="fragrances[0]">
+                                    <div class="feed-product-img">
+                                        <img [src]="fragrances[0].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{fragrances[0].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!fragrances[0]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="fragrances[1]">
+                                    <div class="feed-product-img">
+                                        <img [src]="fragrances[1].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{fragrances[1].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!fragrances[1]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="fragrances[2]">
+                                    <div class="feed-product-img">
+                                        <img [src]="fragrances[2].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{fragrances[2].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!fragrances[2]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="fragrances[3]">
+                                    <div class="feed-product-img">
+                                        <img [src]="fragrances[3].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{fragrances[3].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!fragrances[3]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feed-list-col" (click)="navigateToList('Bags')">
+                <div class="feed-box white-bg">
+                    <div class="feed-header">
+                        <h2>Bags For All </h2>
+                    </div>
+                    <div class="feed-product-box">
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="bags[0]">
+                                    <div class="feed-product-img">
+                                        <img [src]="bags[0].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{bags[0].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!bags[0]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="bags[1]">
+                                    <div class="feed-product-img">
+                                        <img [src]="bags[1].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{bags[1].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!bags[1]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed-grid-row">
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="bags[2]">
+                                    <div class="feed-product-img">
+                                        <img [src]="bags[2].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{bags[2].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!bags[2]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                            <div class="feed-product-col">
+                                <div class="feed-product-box" *ngIf="bags[3]">
+                                    <div class="feed-product-img">
+                                        <img [src]="bags[3].pictures[0]" alt="" />
+                                    </div>
+                                    <p class="feed-product-name">{{bags[3].name}}</p>
+                                </div>
+                                <div class="product-load" *ngIf="!bags[3]">
+                                    <app-loader></app-loader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="style-wrap">
+            <app-style-product></app-style-product>
+        </div>
+    </div>
+</div>

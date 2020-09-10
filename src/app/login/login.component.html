@@ -1,0 +1,57 @@
+<div class="login-wrap">
+    <div class="login-container">
+        <div class="login-inner-wrap">
+            <div class="login-leftwrap">
+                <img src="assets/images/login-img01.jpg" alt="" />
+                <div class="login-caption">
+                    <ul>
+                        <li>Shop</li>
+                        <li>Share</li>
+                        <li>Store</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="login-rightwrap">
+                <div class="form-row">
+                    <div class="logo-box">
+                        <img src="assets/images/login-logo.png" alt="" />
+                     </div>
+                    <form class="theme-form" id="loginForm" (ngSubmit)="login()">
+                        <div class="login-form-container">
+                            <h3>Sign in</h3>
+                            <p>Don't have an account? <a routerLink="/register">Create an account.</a></p>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="username" placeholder="Username" required=""
+                                    name="username" [(ngModel)]="credential.Username">
+                            </div>
+                            <div class="form-group">
+                                <input type="Password" class="form-control" id="password" placeholder="Password" required=""
+                                    name="password" [(ngModel)]="credential.Password">
+                            </div>
+                        </div>
+                        <div class="login-bottom-row">
+                            <div class="login-checkbox">
+                                <input type="checkbox" id="remember" name="remember" [(ngModel)]="rememberMe" />
+                                <label for="remember" class="">Remember me</label>
+                            </div> 
+                        </div>
+                        <div class="login-action">
+                            <button class="btn btn-solid" (ngSubmit)="login()">{{buttonText}}</button>
+                        </div>
+                    </form>
+                    <div class="or-devider">
+                        <span class="devider-txt">Or</span>
+                    </div>
+                    <div class="social-login">
+                        <ul>
+                            <li><a href="javascript:;" class="facebook" (click)="signInWithFB()"><i class="fa fa-facebook"></i> Facebook</a></li>
+                            <li><a href="javascript:;" class="google" (click)="signInWithGoogle()"><i class="fa fa-google-plus"></i>Google</a></li>
+                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Twitter</a></li>
+                            <li><a href="javascript:;" class="instagram" (click)="signInWithInstagram()"><i class="fa fa-instagram"></i>Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>   
+</div>

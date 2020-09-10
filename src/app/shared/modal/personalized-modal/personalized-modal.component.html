@@ -1,0 +1,176 @@
+<div class="modal-full-wrap">
+  <div class="modal-inner-container">
+    <div class="modal-inner-content">
+      <div class="modal-body-content">
+
+        <!--Brands-->
+        <ngx-slick-carousel class="category-brand-pro" #personalizedCarousel [config]="categoryBrandSliderConfig"
+          (afterChange)="afterChange($event)">
+          <!--User Info-->
+          <div ngxSlickItem *ngIf="user.Provider != '' && user.Provider != 'BME'">
+            <div class="">
+              <div class="user-row-info">
+                <div class="user-leftrow">
+                  <div class="user-header-info">
+                    <h4>Choose your Gender</h4>
+                    <p style="margin-bottom: 0;">This will help you in adjust reps, weights and plan for you</p>
+                  </div>
+                  <div class="gender-row">
+                    <div class="gender-label-row">
+                      <label for="male" class="gender-label-display">
+                        <input type="radio" name="gender" id="male" [checked]="user.Gender == 'Male'" (click)="selectGender('Male')" />
+                        <div class="gender-box">
+                          <div class="gender-img-box">
+                            <img src="assets/images/male-bg.png" />
+                            <span class="select-check">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                            </span>
+                          </div>
+                          <span class="label-select-info">Man</span>
+                        </div>
+                      </label>
+                      <label for="female" class="gender-label-display">
+                        <input type="radio" name="gender" id="female" [checked]="user.Gender == 'Female'" (click)="selectGender('Female')" />
+                        <div class="gender-box">
+                          <div class="gender-img-box">
+                            <img src="assets/images/female-bg.png" />
+                            <span class="select-check">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                            </span>
+                          </div>
+                          <span class="label-select-info">Woman</span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="user-header-info">
+                    <h4>Please fill your Information</h4>
+                    <p>You will get better recommendations</p>
+                  </div>
+                  <div class="fill-form-group">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Age :</label>
+                          <input type="number" class="form-control" name="address" [(ngModel)]="user.Age">
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="form-group">
+                          <label>Phone Number :</label>
+                          <input type="text" class="form-control" name="mobile" [(ngModel)]="user.PhoneNumber">
+                        </div>                        
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                      <label>Address :</label>
+                      <textarea class="form-control" name="address" [(ngModel)]="user.Address"></textarea>                      
+                    </div>                    
+                  </div>
+                </div>
+                <div class="user-rightrow">
+                  <div class="user-rightheader">
+                    <h2># Discover </h2>
+                    <p>Personalize your shopping experience. Let's get to know you better.</p>
+                  </div>
+                  <div class="full-widtth-img-box">
+                    <img src="assets/images/brand05.jpg" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--category-->
+          <div ngxSlickItem>
+            <div class="modal-top-header">
+              <h4>Select Category</h4>
+              <div class="category-search-box">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0V0z" fill="none"></path>
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                  </path>
+                </svg>
+                <input class="search-input" placeholder="Search your category" type="text"
+                  (input)="search($event.target.value, 'category')" [(ngModel)]="searchKey">
+              </div>
+            </div>
+            <div class="slick-scroll-wrap">
+              <div class="category-list-row">
+                <div class="category-list-item" *ngFor="let category of categories">
+                  <label class="label-category">
+                    <input type="checkbox" [checked]="category.isChecked" (click)="toggleCategories(category)" />
+                    <div class="category-box">
+                      <span class="select-category">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <path d="M0 0h24v24H0z" fill="none" />
+                          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                      </span>
+                      <div class="category-img">
+                        <img [src]="category.image" alt="" />
+                      </div>
+                      <div class="category-name">
+                        <span>{{category.category}}</span>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Brand-->
+          <div ngxSlickItem>
+            <div class="modal-top-header">
+              <h4>Select Brand</h4>
+              <div class="category-search-box">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0V0z" fill="none"></path>
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                  </path>
+                </svg>
+                <input class="search-input" placeholder="Search your brand" type="text"
+                  (input)="search($event.target.value, 'brand')" [(ngModel)]="searchKey">
+              </div>
+            </div>
+            <div class="slick-scroll-wrap">
+              <div class="category-list-row">
+                <div class="category-list-item" *ngFor="let brand of brands">
+                  <label class="label-category">
+                    <input type="checkbox" [checked]="brand.isChecked" (click)="toggleBrands(brand)" />
+                    <div class="category-box">
+                      <span class="select-category">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <path d="M0 0h24v24H0z" fill="none" />
+                          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                      </span>
+                      <div class="category-img">
+                        <img [src]="brand.product? brand.product.pictures[0] : ''" />
+                      </div>
+                      <div class="category-name">
+                        <span>{{brand.brand}}</span>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+      <div class="modal-bottom-action">
+        <button type="button" class="btn-next"
+          (click)="personalizedCarousel.slickGoTo(currentSliderIndex + 1); finish()">
+          {{navigationButtonText}}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M21 11H6.83l3.58-3.59L9 6l-6 6 6 6 1.41-1.41L6.83 13H21z" /></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

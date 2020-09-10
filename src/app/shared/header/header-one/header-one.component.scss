@@ -1,0 +1,20 @@
+@import '../../../../vendor/pace/pace-orange-min.css';
+@import '../../../../assets/scss/color1';
+
+  /* Break Points */
+  @media screen and (max-width: 1199px) {
+      .header-navbar-row{
+          width: 100%;
+      }
+  }
+  .modal-container{
+    width: 100%;    
+}
+.modal-dialog{
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+  
